@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <style>
+        canvas {
+            background: black;
+        }
+    </style>
+  </head>
+  <body id="rusty-cogs-main">
+    <!-- Note the usage of `type=module` here as this is an ES6 module -->
+    <script type="module">
+      import init from './pkg/rusty_cogs_lib.js';
+      init().then(() => {
+        console.log("WASM Loaded")
+      });
+    </script>
+  </body>
+</html>

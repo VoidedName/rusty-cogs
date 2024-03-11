@@ -1,0 +1,34 @@
+[package]
+name = "rusty-cogs"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "rusty_cogs_lib"
+crate-type = ["cdylib", "rlib"]
+
+[[bin]]
+name = "rusty-cogs"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1.0.80"
+bytemuck = { version = "1.14.3", features = ["derive"] }
+cgmath = "0.18.0"
+env_logger = "0.11.2"
+image = { version = "0.24.9", features = ["png", "jpeg"] }
+log = "0.4.21"
+pollster = "0.3.0"
+winit = "0.29.12"
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+wgpu = { version = "0.19.2" }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+console_error_panic_hook = "0.1.7"
+wasm-bindgen = "0.2.91"
+wasm-bindgen-futures = "0.4.41"
+web-sys = { version = "0.3.68", features = ["Document", "Window", "Element"] }
+wgpu = { version = "0.19.2", default-features = false, features = ["webgl", "wgsl"] }
+console_log = "1.0.0"
+
